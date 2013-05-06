@@ -2,8 +2,9 @@
 
 An online editor for html, css, js with TABS
 
-## Setup
+### Setup
 
+```html
 <div class="codetabs" data-name="sketch">
    <!-- First Tab -->
    <textarea data-name="sketch.html"></textarea>
@@ -12,8 +13,9 @@ An online editor for html, css, js with TABS
    <!-- Second Tab -->
    <textarea data-name="sketch.css"></textarea>
 </div>
+```
 
-## Options
+### Options
 
 - data-appendbody="true"
 - data-width="800"
