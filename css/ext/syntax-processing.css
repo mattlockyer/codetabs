@@ -1,0 +1,58 @@
+/*
+* Main container
+*/
+.CodeMirror {
+    height:100%;
+    background-color:#fff;
+}
+/*
+* Line Styles
+*/
+.cm-word {
+    color:#000 !important;
+}
+.cm-comment {
+    color:#7e7e7e !important;
+}
+.cm-number {
+    color:#ff6699 !important;
+}
+.cm-keyword {
+    color:#006699 !important;
+}
+.cm-constant {
+    color:#617952 !important;
+}
+.cm-variable {
+    color:#ff6699 !important;
+}
+.cm-class {
+    color:#e37139 !important;
+}
+.cm-reserved {
+    color:#72a7c2 !important;
+}
+.cm-control {
+    color:#669900 !important;
+}
+.cm-string {
+    color:#7d4793 !important;
+}
+.CodeMirror-selected {
+    background-color:#ffcc00 !important;
+}
+/*
+* Extensions
+*/
+.CodeMirror-matchingbracket, .cm-matchhighlight {
+    color:#000 !important;
+    background-color:#ffcc00 !important;
+}
+.CodeMirror-foldmarker {
+    background-color:#ffcc00 !important;
+    cursor: pointer !important;
+}
+.CodeMirror pre {
+    color:#000 !important;
+}
+

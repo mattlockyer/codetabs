@@ -1,0 +1,163 @@
+<html>
+    <head>
+        <script id="codetabs" type="text/javascript" src="js/codetabs.js"></script>
+        <style>
+            body {
+                margin:32px;
+                padding:0px;
+                background-color:#eee;
+            }
+        </style>
+    </head>
+    <body>
+
+        <!--
+        data-appendbody="true"
+        data-width="800"
+        data-height="300"
+        data-name="sketch"
+        data-processing="http://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.1/processing.min.js"
+        data-nohints="true"
+        data-nozip="true"
+        data-nofullscreen="true"
+        data-ishidden="true"
+        data-isplaying="true"
+        data-isfullscreen="true"
+        data-webcam="true"
+        data-scripts="http://cdnjs.cloudflare.com/ajax/libs/three.js/r57/three.min.js"
+        data-fontsize="16px"
+        data-images="img/cat.jpg"
+        data-lines="#eee"
+        data-background="#aaa"
+        -->
+
+            <div class="codetabs" data-name="sketch" data-width="1000" data-height="450"
+                 data-webcam="true" 
+                 data-scripts="http://cdnjs.cloudflare.com/ajax/libs/three.js/r57/three.min.js"
+                 data-fontsize="16px" data-lines="#eee" data-background="#aaa">
+
+                            <textarea data-name="three.js">
+onPageLoad(function() {
+    var camera, scene, renderer, geometry, material, mesh;
+
+    init();
+    animate();
+
+    function init() {
+        scene = new THREE.Scene();
+
+        camera = new THREE.PerspectiveCamera(50, fullWidth/fullHeight, 1, 10000);
+        camera.position.z = 500;
+        scene.add(camera);
+
+        geometry = new THREE.CubeGeometry(200, 200, 200);
+        material = new THREE.MeshNormalMaterial();
+
+        mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
+        renderer = new THREE.CanvasRenderer();
+        renderer.setSize(fullWidth, fullHeight);
+
+        document.body.appendChild(renderer.domElement);
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        render();
+    }
+
+    function render() {
+        mesh.rotation.x += 0.01;
+        mesh.rotation.y += 0.02;
+        renderer.render(scene, camera);
+    }
+});
+                            </textarea>
+
+                            </div>
+
+
+                                <div class="codetabs" data-name="sketch2" data-processing="js/local/processing-1.4.1.min.js"
+                                     data-webcam="true" data-width="1000" data-height="450"
+                                     data-fontsize="16px" data-lines="#eee" data-background="#aaa">
+                                    <textarea data-name="sketch.pde">
+ArrayList<Ball> ballList = new ArrayList<Ball>();
+PImage cat;
+void setup() {
+  size(fullWidth, fullHeight);
+  stroke(0, 128);
+  //strokeWeight(2);
+  fill(255, 0, 0, 128);
+  //The ArrayList doesn't have a size yet
+  //So we have to set how much we will loop literally (10)
+  for (int i = 0; i < 10; i++) {
+    //Add a new ball object to the ArrayList ballList
+    ballList.add(new Ball());
+  }
+  cat = loadImage(cat);
+  //Webcam.init();
+}
+
+void draw() {
+  background(255);
+  image(cat, 0, 0, width/2, height);
+  if (Webcam.video) externals.context.drawImage(Webcam.video, width/2, 0, width/2, height);
+  //Now that the ArrayList has a size we can use .size()
+  //in our loop
+  for (int i = 0; i < ballList.size(); i++) {
+    //Get the current ball in the loop, the ball at position i
+    //Notice we DON'T have to cast the reference variable
+    //since the ArrayList is typed
+    Ball curBall = ballList.get(i);
+    curBall.update();
+    curBall.checkWalls();
+    curBall.drawMe();
+  }
+}
+
+                                                </textarea>
+                                                <textarea data-name="Ball.pde">
+                
+//A class to describe a ball object
+class Ball {
+  float xPos, yPos, xVel, yVel;
+  Ball() {
+    //Set the initial values for our Ball object's variables (fields)
+    xPos = random(16, width - 16);
+    yPos = random(16, height - 16);
+    xVel = random(-2, 2);
+    yVel = random(-2, 2);
+  }
+  //A method to update the ball position
+  void update() {
+    xPos += xVel;
+    yPos += yVel;
+  }
+  //A method to check collisions with the walls
+  void checkWalls() {
+    if (abs(xPos - width/2) > width/2 - 16) {
+      xVel *= -1;
+    }
+    if (abs(yPos - height/2) > height/2 - 16) {
+      yVel *= -1;
+    }
+  }
+  //A method to draw the ball object
+  void drawMe() {
+    pushMatrix();
+    translate(xPos, yPos);
+    ellipse(0, 0, 32, 32);
+    popMatrix();
+  }
+}
+                
+                                                </textarea>
+
+                                                    
+                                </div>
+                                
+                                
+                                
+    </body>
+</html>
