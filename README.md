@@ -18,6 +18,7 @@ An online editor for html, css, js with TABS
 ### Options
 
 - data-appendbody="true"
+(append code tabs to the body tag instead of to the parent tag)
 - data-width="800"
 - data-height="300"
 - data-name="sketch"
