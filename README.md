@@ -8,9 +8,9 @@ An online editor for html, css, js with TABS
 <div class="codetabs" data-name="sketch">
    <!-- First Tab -->
    <textarea data-name="sketch.html"></textarea>
-   <!-- Third Tab -->
-   <textarea data-name="sketch.js"></textarea>
    <!-- Second Tab -->
+   <textarea data-name="sketch.js"></textarea>
+   <!-- Third Tab -->
    <textarea data-name="sketch.css"></textarea>
 </div>
 ```
